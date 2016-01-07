@@ -21,7 +21,8 @@ convention) and is either a .doc or.docx.
 	  This script must have the function executed for all 12
 	  attendings if passing output to RVS_vis (or RVS_vis must
 	  be edited to fit the number of attendings). This script
-	  will have test attendings sensitive information (all	  fake). It is also a bash script.
+	  will have test attendings sensitive information (all
+	  fake). It is also a bash script.
 
 	> RVS_emailer_newfunction.sh contains the function for a
 	  set of weekly rvs emails (to each attending). This has
@@ -35,7 +36,8 @@ convention) and is either a .doc or.docx.
 
 	> RVS_vis.py is the visualization script called in
 	  RVS_reporter_newfunction.sh. It requires pandas and the
-	  latest matplotlib. This can be run as a standalone if user does not want rvs's to be logged (to avoid mucking
+	  latest matplotlib. This can be run as a standalone if
+	  user does not want rvs's to be logged (to avoid mucking
 	  up the log with irregular, repeated responses).
 	  It is a python script.
 
