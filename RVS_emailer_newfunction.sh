@@ -30,7 +30,7 @@ echo "" | cat > premail.txt
 DATE=$(date +%Y%m%d)
 ##echo "today is [$DATE]"
 
-files="$(ls -1 /mnt/mac/Research/FTD\ PPG/PPG\ Research\ Visit\ Summaries/OUTSTANDING_RVS/$name_dir/*RVS*)"  # first get all full file names in one var
+files="$(ls -1 ./$name_dir/*RVS*)"  # first get all full file names in one var
 arr=$(echo "$files" | tr ";" "\n")                                           # parse into each short file name
 for x in $arr
 do

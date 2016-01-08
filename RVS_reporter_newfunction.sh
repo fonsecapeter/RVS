@@ -21,7 +21,7 @@ datedash=$(date +%Y-%m-%d)
 ##echo "today is [$DATE]"
 
 # first get all files in one var
-files="$(ls -1 /mnt/mac/Research/FTD\ PPG/PPG\ Research\ Visit\ Summaries/OUTSTANDING_RVS/$name_dir/*RVS*)"
+files="$(ls -1 ./$name_dir/*RVS*)"
 # parse into each files
 arr=$(echo "$files" | tr ";" "\n")
 for x in $arr
