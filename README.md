@@ -1,5 +1,7 @@
 This repo contains the core code for rvs functionality.
 
+ >> It is a work in progress <<
+
 The "autonomy branch" is created to edit the code so that it
 works as a standalone package. The original code was set up
 in a directory structure that I had no control over
@@ -11,6 +13,14 @@ An rvs is a word document. It is a summary of a research
 participant's visit. The attending physician must complete
 one for each participant they see. There are 12 attendings responsible for a number of rvs's each. Each attending has a directory containing their rvs's. Each rvs is named "lname, fname_id_yyyy.mm.dd_RVS" (also did not have control over the
 convention) and is either a .doc or.docx.
+
+	> RVS_test_setup.sh initializes a set of directories for
+	  12 fake attendings. It also generates random fake rvs's
+	  in each directory. This script is complete.
+	  RVS_reporter_newfunction.sh and RVS_emailer_newfunction.sh
+	  need to be editted to match this `autonomous' version
+	  of the directory structure (is much simpler than the real
+	  one!)
 
 
 	> RVS_reporter_newfunction.sh generates a .csv summarizing
