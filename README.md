@@ -1,6 +1,6 @@
 This repo contains the core code for rvs functionality.
 
- >> It is a work in progress <<
+ >> It is a work in progress
 
 The "autonomy branch" is created to edit the code so that it
 works as a standalone package. The original code was set up
