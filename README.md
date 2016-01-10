@@ -1,18 +1,28 @@
-This repo contains the core code for rvs functionality.
+This repo contains the core code for rvs functionality
 
- >> It is a work in progress
-
-The "autonomy branch" is created to edit the code so that it
-works as a standalone package. The original code was set up
-in a directory structure that I had no control over
-(containted lots of spaces and underscores). This branch will
-function on it's own, including a script to create a local
-diretory test set and fill it with some test rvs's.
+ >> The "autonomy branch" is created as a standalone package.
+ The original code was set up in a directory structure that I
+ had no control over (containted lots of spaces and underscores).
+ This branch will function on it's own, including a script to
+ create a local diretory test set and fill it with some test rvs's.
 
 An rvs is a word document. It is a summary of a research
-participant's visit. The attending physician must complete
-one for each participant they see. There are 12 attendings responsible for a number of rvs's each. Each attending has a directory containing their rvs's. Each rvs is named "lname, fname_id_yyyy.mm.dd_RVS" (also did not have control over the
-convention) and is either a .doc or.docx.
+participant's visit. This summary must be completed and sent to
+their primary care physicians. Each attending physician must complete
+one for every participant they see. There are 12 attendings responsible
+for a number of rvs's each. Each attending has a folder containing
+their rvs's. The rvs manager (me) will place an empty rvs in the appropriate
+folder when a participant finishes a research visit. The attending will
+move an RVS to a "DONE" folder when finished. Each rvs is named
+"lname, fname_id_yyyy.mm.dd_RVS" (I also did not have control over the convention) and is either a .doc or.docx.
+
+This standalone package can be downloaded to a local machine and used with
+full functionality to test the code. First make a directory for this, then
+run "RVS_test_setup.sh" to generate fake attendings and rvs's and create and
+empty csv called "RVS_report.csv". Next,run "RVS_reporter.sh" to fill the 
+csv with data and generate a bar graph. Finally, edit your email in 
+"RVS_emailer.sh" to recieve all emails (meant to go to the fake attendings)
+and run it to see the emails.
 
 	> RVS_test_setup.sh initializes a set of directories for
 	  12 fake attendings. It also generates random fake rvs's
@@ -23,7 +33,7 @@ convention) and is either a .doc or.docx.
 	  one!)
 
 
-	> RVS_reporter_newfunction.sh generates a .csv summarizing
+	> RVS_reporter.sh generates a .csv summarizing
 	  the rvs's that each attending is responsible for. Then
 	  the .csv is passed to RVS_vis to generate a stacked bar
 	  graph. This can be executed regularly (via crontab)
@@ -34,7 +44,7 @@ convention) and is either a .doc or.docx.
 	  will have test attendings sensitive information (all
 	  fake). It is also a bash script.
 
-	> RVS_emailer_newfunction.sh contains the function for a
+	> RVS_emailer.sh contains the function for a
 	  set of weekly rvs emails (to each attending). This has
 	  all sensitive information removed (attending names and
 	  email addresses). This script will have test attendings
@@ -42,13 +52,18 @@ convention) and is either a .doc or.docx.
 	  script.It is set up such that a week that is > 3 weeks
 	  old is "overdue". The weekly recurance is done through
 	  crontab, which must be editted (see comments within
-	  code). It is a bash script.
+	  code). It is a bash script and was written on a linux
+	  machine. Therefore coreutils must be brew installed for
+	  this to work on a mac (currently set up as such) where
+	  'date' in linux becomes 'gdate' in unix.
 
 	> RVS_vis.py is the visualization script called in
 	  RVS_reporter_newfunction.sh. It requires pandas and the
 	  latest matplotlib. This can be run as a standalone if
 	  user does not want rvs's to be logged (to avoid mucking
 	  up the log with irregular, repeated responses).
-	  It is a python script.
+	  It is a python script. Recommend using anaconda2.
 
+ >> dependencies: bash, python, matplotlip, pandas, coreutils (if using mac)
+ 
 -peter
