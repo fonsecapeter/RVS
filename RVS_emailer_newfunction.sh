@@ -15,10 +15,10 @@
 
 # define function to be repeated for every attending
 emailer () {
-  name_first = $1
-  name_last = $2
-  name_dir = $3
-  name_email = $4
+  name_first=$1
+  name_last=$2
+  name_dir=$3
+  name_email=$4
 
 filecount="0"                                                                # initialize variables
 parsecount="0"
@@ -27,7 +27,7 @@ rvsoverduecount="0"
 echo "Dr. $name_first $name_last," | cat > email.txt                         # initialize txt for email
 echo "" | cat > premail.txt
 
-DATE=$(date +%Y%m%d)
+DATE=$(gdate +%Y%m%d)
 ##echo "today is [$DATE]"
 
 files="$(ls -1 ./$name_dir/*RVS*)"  # first get all full file names in one var
@@ -36,23 +36,23 @@ for x in $arr
 do
   let filecount++
   ##echo "file $filecount"
-  arrloop=$(echo "> [$x]" | tr "_" "\n")                                      # parse each filename to extract pidn and date
+  arrloop=$(echo "$x" | tr "_" "\n")                                      # parse each filename to extract pidn and date
   for x in $arrloop                                                           # because of dir/fname structure/convention,
   do                                                                          # 3rd of numericals is pidn, 4th is date
     let parsecount++                                                         
      ##echo "parse $parsecount"
-    if [ $parsecount -eq 3 ] && [ $x -eq $x ] 2>/dev/null; then
+    if [ $parsecount -eq 2 ] && [ $x -eq $x ] 2>/dev/null; then
       let rvscount++                                                          # count outstanding rvs's
       ##echo "pidn_$rvscount > [$x]"
       rvspidn=$x                                                              # get pidn
     fi
-    if [ $parsecount -eq 4 ]; then
+    if [ $parsecount -eq 3 ]; then
       ##echo "date_$rvscount > [$x]"
         rvsdate=$( echo "$x" | tr -d ".")                                     # get date for calculation
         rvsdatedash=$( echo "$x" | tr "." "-")                                # get date for email
         ##echo "rvsdate $rvsdate"
-      DUEDATE=$(date -d "$rvsdate 3 weeks" +%Y%m%d)                           # calculate due date of 3 weeks after visit for each RVS
-      DUEDATEDASH=$(date -d "$DUEDATE" +%Y-%m-%d)                             # calculate due date formatted for email
+      DUEDATE=$(gdate -d "$rvsdate 3 weeks" +%Y%m%d)                           # calculate due date of 3 weeks after visit for each RVS
+      DUEDATEDASH=$(gdate -d "$DUEDATE" +%Y-%m-%d)                             # calculate due date formatted for email
       if [ "$DATE" -ge "$DUEDATE" ]; then
         let rvsoverduecount++                                                 # count overdue rvs's
         echo "  $rvspidn from $rvsdatedash is OVERDUE" | cat >> premail.txt 
@@ -77,13 +77,25 @@ if [ "$rvscount" -gt "0" ]; then
 fi
 }
 
-# unhash below and repeat for all attendings
+# unhash below and repeat function for all attendings
 # name_first = first name
 # name_last = last name
 # name_dir = directory name in hdrive
 # name_email = email address
 
 # emailer <name_first> <name_last> <name_dir> <name_email>
+#reporter "Art" "Vandalay" "Vandalay,Art" 
+#reporter "Julius" "Hibbert" "Hibbert,Julius"
+#reporter "Nick" "Riviera" "Riviera,Nick"
+#reporter "Bob" "Vance" "Vance,Bob"
+#reporter "Peter" "Fonseca" "Fonseca,Peter"
+#reporter "Cosmo" "Kramer" "Kramer,Cosmo"
+#reporter "Jerry" "Seinfeld" "Seinfeld,Jerry"
+#reporter "George" "Costanza" "Costanza,George"
+#reporter "Elaine" "Benes" "Benes,Elaine"
+#reporter "Lex" "Luthor" "Luthor,Lex"
+#reporter "Clark" "Kent" "Kent,Clark"
+#reporter "Elizabeth" "Lemon" "Lemon,Elizabeth"
 
 rm email.txt                                                                 # remove email txt files
 rm premail.txt
