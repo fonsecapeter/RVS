@@ -6,13 +6,13 @@ import matplotlib
 matplotlib.style.use('ggplot')
 
 # import and massage data
-df = pd.read_csv("RVS_report.csv", header=None, names=["att", "date", "num_rvs", "num_old"])
-df['num_new'] = df['num_rvs'] - df['num_old']
+df = pd.read_csv("RVS_report.csv", header=None, names=["att", "date", "num_rvs", ">6mo old"])
+df['<6mo old'] = df['num_rvs'] - df['>6mo old']
 
-cols_to_keep = ['att', 'num_new', 'num_old']
+cols_to_keep = ['att', '<6mo old', '>6mo old']
 df_vis = df[cols_to_keep].tail(12)
 
-# df_long = pd.melt(df.tail(12), id_vars=['att'], value_vars=['num_new', 'num_old'])
+# df_long = pd.melt(df.tail(12), id_vars=['att'], value_vars=['<6mo old', '>6mo old'])
 
 #ggplot(df_long, aes(x='att', y='value', fill='variable')) +\
 #             geom_bar(stat='identity') +\
