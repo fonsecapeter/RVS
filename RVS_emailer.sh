@@ -67,7 +67,7 @@ done
 echo "You have [$rvscount] RVS's outstanding. [$rvsoverduecount] of these are overdue, please approve." | cat >> email.txt    # compose email
 cat premail.txt >> email.txt
 echo "" | cat >> email.txt                                                                                        
-echo "Files are in H:\Research\FTD PPG\PPG Research Visit Summaries\OUTSTANDING_RVS\$name_dir" | cat >> email.txt
+echo "Files are in \$name_dir" | cat >> email.txt
 echo "" | cat >> email.txt
 echo "Do not reply to this email, please contact Peter.Fonseca@ucsf.edu if you have any questions." | cat >> email.txt
 
