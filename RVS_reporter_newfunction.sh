@@ -8,8 +8,8 @@
 # troubleshooting/development commands denoted by ##
 
 reporter () {
-  name_first = $1
-  name_dir = $2
+  name_first=$1
+  name_dir=$2
 
 filecount="0"
 parsecount="0"
@@ -22,37 +22,43 @@ datedash=$(date +%Y-%m-%d)
 
 # first get all files in one var
 files="$(ls -1 ./$name_dir/*RVS*)"
+##echo "files: $files"
 # parse into each files
 arr=$(echo "$files" | tr ";" "\n")
 for x in $arr
 do
   let filecount++
   ##echo "file $filecount"
+  ##echo "$x"
   # parse each filename to extract pidn and date
   # because of dir/fname structure/convention,
   # 3rd of numericals is pidn, 4th is date
-  arrloop=$(echo "> [$x]" | tr "_" "\n")
+  arrloop=$(echo "$x" | tr "_" "\n")
+  ##echo "arrloop: $arrloop"
   for x in $arrloop
   do
     let parsecount++
-     ##echo "parse $parsecount"
-    if [ $parsecount -eq 3 ] && [ $x -eq $x ] 2>/dev/null; then
+     #echo "parse $parsecount"
+    if [ $parsecount -eq 2 ] && [ $x -eq $x ] 2>/dev/null; then
       # count outstanding rvs's
       let rvscount++
       ##echo "pidn_$rvscount > [$x]"
     fi
-    if [ $parsecount -eq 4 ]; then
+    if [ $parsecount -eq 3 ]; then
       ##echo "date_$rvscount > [$x]"
+      	# format date for math
         rvsdate=$( echo "$x" | tr -d ".")
-        ##echo "rvsdate $rvsdate"
+        ##echo "rvsdate_$rvscount > [$rvsdate]"
       # calculate due date of 6 months after visit
       # for each rvs
-      DUEDATE=$(date -d "$rvsdate 6 months" +%Y%m%d)
+      # gdate for mac, date for linux
+      # must brew install coreutils to use gdate
+      DUEDATE=$(gdate -d "$rvsdate 6 months" +%Y%m%d)
       ##echo "due: $DUEDATE"
       if [ "$DATE" -ge "$DUEDATE" ]; then
         # count overdue rvs's
         let rvsoverduecount++
-        ##echo "> $name_first_[$rvscount] is overdue"
+        echo "> $name_first_[$rvscount] is overdue"
       fi
     fi
   done
@@ -68,7 +74,18 @@ echo "> $name_first's RVS's reported on [$datedash]"
 # name_first = first name
 # name_dir = attendings directory
 
-# reporter <name_first> <name_dir>
+reporter "Art" "Vandalay,Art"
+reporter "Julius" "Hibbert,Julius"
+reporter "Nick" "Riviera,Nick"
+reporter "Bob" "Vance,Bob"
+reporter "Peter" "Fonseca,Peter"
+reporter "Cosmo" "Kramer,Cosmo"
+reporter "Jerry" "Seinfeld,Jerry"
+reporter "George" "Costanza,George"
+reporter "Elaine" "Benes,Elaine"
+reporter "Lex" "Luthor,Lex"
+reporter "Clark" "Kent,Clark"
+reporter "Elizabeth" "Lemon,Elizabeth"
 
 # visualize the RVS_report.csv
-./RVS_vis.py
+#./RVS_vis.py
