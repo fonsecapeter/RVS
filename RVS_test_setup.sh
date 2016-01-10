@@ -81,3 +81,7 @@ for i in "${attds[@]}"; do
 
 	let i++
 done
+
+mkdir "DONE"
+
+touch "RVS_report.csv"

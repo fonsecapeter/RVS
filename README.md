@@ -1,4 +1,4 @@
-This repo contains the core code for rvs functionality
+This repository contains the core code for rvs functionality
 
  >> The "autonomy branch" is created as a standalone package.
  The original code was set up in a directory structure that I
@@ -6,15 +6,15 @@ This repo contains the core code for rvs functionality
  This branch will function on it's own, including a script to
  create a local diretory test set and fill it with some test rvs's.
 
-An rvs is a word document. It is a summary of a research
+An "rvs" is a word document. It is a summary of a research
 participant's visit. This summary must be completed and sent to
-their primary care physicians. Each attending physician must complete
-one for every participant they see. There are 12 attendings responsible
-for a number of rvs's each. Each attending has a folder containing
-their rvs's. The rvs manager (me) will place an empty rvs in the appropriate
-folder when a participant finishes a research visit. The attending will
-move an RVS to a "DONE" folder when finished. Each rvs is named
-"lname, fname_id_yyyy.mm.dd_RVS" (I also did not have control over the convention) and is either a .doc or.docx.
+the participant's primary care physicians. A research visit is overseen
+by an attending physician (aka attending), who must complete one for every
+participant they see. There are 12 attendings responsible for a number of rvs's
+each. Each attending has a folder containing
+their rvs's. The rvs manager (me) will place a rough draft rvs (drafted by others)
+in the appropriate folder when a participant finishes a research visit. The attending will move an RVS out of their folder and into the "DONE" folder when finished. Each rvs is named "lname, fname_id_yyyy.mm.dd_RVS" (I also did not have
+control over the convention) and is either a .doc or.docx.
 
 This standalone package can be downloaded to a local machine and used with
 full functionality to test the code. First make a directory for this, then
