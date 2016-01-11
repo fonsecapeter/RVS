@@ -73,7 +73,7 @@ echo "" | cat >> email.txt
 echo "Do not reply to this email, please contact ${name_ccemail} if you have any questions." | cat >> email.txt
 
 if [ "$rvscount" -gt "0" ]; then
-  mail -s "Overdue PPG RVS's" -c "$name_ccemail" "$name_email" < email.txt # send attd email if they have any outstanding RVS's
+  mail -s "Overdue RVS's" -c "$name_ccemail" "$name_email" < email.txt # send attd email if they have any outstanding RVS's
   echo "> email sent to [${name_email}]"                                                                          
 fi
 }
