@@ -1,7 +1,7 @@
 #!/bin/bash
 # PPG RVS emailer by Peter Fonseca
 # troubleshooting/development commands denoted by ##
-# cron job should be  0 9 * * Wed /home/pfonseca/RVS_emailer_newfunction.sh
+# cron job should be  0 9 * * Wed /<path>/RVS_emailer.sh
 # crontab -e opens crontab for editting, choose nano
 # crontab -l displays current crontab entries
 # * * * * * command to be executed
@@ -19,6 +19,7 @@ emailer () {
   name_last=$2
   name_dir=$3
   name_email=$4
+  name_ccemail=$5
 
 filecount="0"                                                                # initialize variables
 parsecount="0"
@@ -37,8 +38,8 @@ do
   let filecount++
   ##echo "file $filecount"
   arrloop=$(echo "$x" | tr "_" "\n")                                      # parse each filename to extract pidn and date
-  for x in $arrloop                                                           # because of dir/fname structure/convention,
-  do                                                                          # 3rd of numericals is pidn, 4th is date
+  for x in $arrloop
+  do
     let parsecount++                                                         
      ##echo "parse $parsecount"
     if [ $parsecount -eq 2 ] && [ $x -eq $x ] 2>/dev/null; then
@@ -55,25 +56,25 @@ do
       DUEDATEDASH=$(gdate -d "$DUEDATE" +%Y-%m-%d)                             # calculate due date formatted for email
       if [ "$DATE" -ge "$DUEDATE" ]; then
         let rvsoverduecount++                                                 # count overdue rvs's
-        echo "  $rvspidn from $rvsdatedash is OVERDUE" | cat >> premail.txt 
+        echo "  $rvspidn from ${rvsdatedash} is OVERDUE" | cat >> premail.txt 
       else
-        echo "  $rvspidn from $rvsdatedash is due $DUEDATEDASH" | cat >> premail.txt
+        echo "  $rvspidn from ${rvsdatedash} is due ${DUEDATEDASH}" | cat >> premail.txt
       fi
     fi
   done
   parsecount="0"
 done
 
-echo "You have [$rvscount] RVS's outstanding. [$rvsoverduecount] of these are overdue, please approve." | cat >> email.txt    # compose email
+echo "You have [${rvscount}] RVS's outstanding. [${rvsoverduecount}] of these are overdue, please approve." | cat >> email.txt    # compose email
 cat premail.txt >> email.txt
 echo "" | cat >> email.txt                                                                                        
-echo "Files are in \$name_dir" | cat >> email.txt
+echo "Files are in <path>${name_dir}" | cat >> email.txt
 echo "" | cat >> email.txt
-echo "Do not reply to this email, please contact Peter.Fonseca@ucsf.edu if you have any questions." | cat >> email.txt
+echo "Do not reply to this email, please contact ${name_ccemail} if you have any questions." | cat >> email.txt
 
 if [ "$rvscount" -gt "0" ]; then
-  mail -s "Overdue PPG RVS's" -c "Peter.Fonseca@ucsf.edu" "$name_email" < email.txt # send attd email if they have any outstanding RVS's
-  echo "> email sent to [$name_email]"                                                                          
+  mail -s "Overdue PPG RVS's" -c "$name_ccemail" "$name_email" < email.txt # send attd email if they have any outstanding RVS's
+  echo "> email sent to [${name_email}]"                                                                          
 fi
 }
 
@@ -83,19 +84,21 @@ fi
 # name_dir = directory name in hdrive
 # name_email = email address
 
-# emailer <name_first> <name_last> <name_dir> <name_email>
-#reporter "Art" "Vandalay" "Vandalay,Art" 
-#reporter "Julius" "Hibbert" "Hibbert,Julius"
-#reporter "Nick" "Riviera" "Riviera,Nick"
-#reporter "Bob" "Vance" "Vance,Bob"
-#reporter "Peter" "Fonseca" "Fonseca,Peter"
-#reporter "Cosmo" "Kramer" "Kramer,Cosmo"
-#reporter "Jerry" "Seinfeld" "Seinfeld,Jerry"
-#reporter "George" "Costanza" "Costanza,George"
-#reporter "Elaine" "Benes" "Benes,Elaine"
-#reporter "Lex" "Luthor" "Luthor,Lex"
-#reporter "Clark" "Kent" "Kent,Clark"
-#reporter "Elizabeth" "Lemon" "Lemon,Elizabeth"
+# emailer <name_first> <name_last> <name_dir> <name_email> <name_ccemail>
+self_email=""
+
+emailer "Art" "Vandalay" "Vandalay,Art" "$self_email" "$self_email"
+emailer "Julius" "Hibbert" "Hibbert,Julius" "$self_email" "$self_email"
+emailer "Nick" "Riviera" "Riviera,Nick" "$self_email" "$self_email"
+emailer "Bob" "Vance" "Vance,Bob" "$self_email" "$self_email"
+emailer "Peter" "Fonseca" "Fonseca,Peter" "$self_email" "$self_email"
+emailer "Cosmo" "Kramer" "Kramer,Cosmo" "$self_email" "$self_email"
+emailer "Jerry" "Seinfeld" "Seinfeld,Jerry" "$self_email" "$self_email"
+emailer "George" "Costanza" "Costanza,George" "$self_email" "$self_email"
+emailer "Elaine" "Benes" "Benes,Elaine" "$self_email" "$self_email"
+emailer "Lex" "Luthor" "Luthor,Lex" "$self_email" "$self_email"
+emailer "Clark" "Kent" "Kent,Clark" "$self_email" "$self_email"
+emailer "Elizabeth" "Lemon" "Lemon,Elizabeth" "$self_email" "$self_email"
 
 rm email.txt                                                                 # remove email txt files
 rm premail.txt
