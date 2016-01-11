@@ -5,7 +5,7 @@ To: Hibbert, Julius
 Subject: Overdue RVS's
 
 Dr. Julius Hibbert,
-You have [5] RVS's outstanding. [1] of these are overdue, please approve.
+You have [5] RVS's outstanding. [4] of these are overdue, please approve.
 
   1183 from 2015-04-12 is OVERDUE
   12306 from 2015-01-14 is OVERDUE
