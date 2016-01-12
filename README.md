@@ -54,7 +54,9 @@ and run it to see them.
 	  code). It is a bash script and was written on a linux
 	  machine. Therefore coreutils must be brew installed for
 	  this to work on a mac (currently set up as such) where
-	  'date' in linux becomes 'gdate' in unix.
+	  'date' in linux becomes 'gdate' in unix. Note that the
+	  visualization is based off of a 6 month cutoff while
+	  the emailer is set up with a 3 week due-date.
 
 	> RVS_vis.py is the visualization script called in
 	  RVS_reporter_newfunction.sh. It requires pandas and the
