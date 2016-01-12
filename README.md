@@ -1,4 +1,4 @@
-This repository contains the core code for rvs functionality
+This repository contains the core code used to manage the rvs program
 
  >> The "autonomy branch" is created as a standalone package.
  The original code was set up in a directory structure that I
@@ -12,25 +12,24 @@ the participant's primary care physicians. A research visit is overseen
 by an attending physician (aka attending), who must complete one for every
 participant they see. There are 12 attendings responsible for a number of rvs's
 each. Each attending has a folder containing
-their rvs's. The rvs manager (me) will place a rough draft rvs (drafted by others)
+their rvs's. The rvs amanager (me) will place a rough draft rvs (drafted by others)
 in the appropriate folder when a participant finishes a research visit. The attending will move an RVS out of their folder and into the "DONE" folder when finished. Each rvs is named "lname, fname_id_yyyy.mm.dd_RVS" (I also did not have
 control over the convention) and is either a .doc or.docx.
 
 This standalone package can be downloaded to a local machine and used with
 full functionality to test the code. First make a directory for this, then
 run "RVS_test_setup.sh" to generate fake attendings and rvs's and create and
-empty csv called "RVS_report.csv". Next,run "RVS_reporter.sh" to fill the 
+empty csv called "RVS_report.csv". Next, run "RVS_reporter.sh" to fill the 
 csv with data and generate a bar graph. Finally, edit your email in 
 "RVS_emailer.sh" to recieve all emails (meant to go to the fake attendings)
-and run it to see the emails.
+and run it to see them.
 
 	> RVS_test_setup.sh initializes a set of directories for
 	  12 fake attendings. It also generates random fake rvs's
-	  in each directory. This script is complete.
-	  RVS_reporter_newfunction.sh and RVS_emailer_newfunction.sh
-	  need to be editted to match this `autonomous' version
-	  of the directory structure (is much simpler than the real
-	  one!)
+	  in each directory. RVS_reporter_newfunction.sh and
+	  RVS_emailer_newfunction.sh need to be editted to match
+	  this `autonomous' version of the directory structure
+	  (is much simpler than the real one!)
 
 
 	> RVS_reporter.sh generates a .csv summarizing
