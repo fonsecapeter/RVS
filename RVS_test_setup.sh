@@ -21,10 +21,25 @@ attds[9]="Luthor,Lex"
 attds[10]="Kent,Clark"
 attds[11]="Lemon,Elizabeth"
 
+# make aux dirs for realism
+# and add links
+# use $PWD instead of . to avoid
+# creating too many levels of symbolic links
+mkdir "DONE"
+ln -s "${PWD}/Converted" "${PWD}/DONE/Converted"
+
+mkdir "Converted"
+ln -s "${PWD}/Uploaded" "${PWD}/Converted/Uploaded"
+
+mkdir "Uploaded"
+
 # loop through attendings
 for i in "${attds[@]}"; do 
 	# create dir for each attd
 	mkdir "$i"
+
+	# insert link to DONE
+	ln -s "${PWD}/DONE" "${PWD}/${i}/DONE"
 
 	# generate random number of test rvs's
 	# and create them with some random info
@@ -81,7 +96,5 @@ for i in "${attds[@]}"; do
 
 	let i++
 done
-
-mkdir "DONE"
 
 touch "RVS_report.csv"
