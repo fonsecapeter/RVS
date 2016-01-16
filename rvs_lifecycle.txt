@@ -2,11 +2,11 @@
   --lifecycle of an rvs--
     (follow the arrows)
 
-[>] PPG Research Visit Summaries
+[>] rvs
  |
  |                           # rvs manager moves to appropriate dir
  |                           # & notifies attd
- |-------[>] rvs [RVS START]>>>>>>>>>>>>>>>v            # attd completes &
+ |-------[>] Outstanding [RVS START]>>>>>>>v            # attd completes &
  |        |                                v            # moves to DONE
  |        |----[>] Benes,Elaine (contains link to DONE)>>>>>>>>>>v
  |        |                                                      v
@@ -16,7 +16,7 @@
  |        |                                        v             ^
  |        |                                        v             ^
  |        |                                        v             ^      # rvs manager converts
- |        |                                        v>>>>>>>>>>>>)^(>>v  # to pdf & moves both to 
+ |        |                                        v>>>>>>>>>>>>)^(>>v  # to pdf & moves both to
  |        |                                                      ^   v  # To Be Converted
  |        |                                                      ^   v
  |        |----[>] Fonseca,Peter (contains link to DONE)>>>>>>>>>^   v
@@ -45,5 +45,4 @@
  |                                           v
  |                                           v  # rvs manager uploads to
  |                                           v  # database and moves doc/pdf
- |-------[>] Uploaded [RVS END]<<<<<<<<<<<<<<v  # pair
- 
+ |-------[>] Uploaded [RVS END]<<<<<<<<<<<<<<v  # pair to Uploaded
