@@ -3,7 +3,7 @@
 # directory set with one folder for each
 # attending, containing rvs's of varying age
 # this is meant to run BEFORE using the
-# other scripts to set up an environment of 
+# other scripts to set up an environment of
 # rvs's and attendings
 # written by Peter Fonseca
 
@@ -25,7 +25,9 @@ attds[11]="Lemon,Elizabeth"
 # and add links
 # use $PWD instead of . to avoid
 # creating too many levels of symbolic links
-mkdir "DONE"
+mkdir "Outstanding"
+
+mkdir "Outstanding/DONE"
 ln -s "${PWD}/Converted" "${PWD}/DONE/Converted"
 
 mkdir "Converted"
@@ -34,12 +36,12 @@ ln -s "${PWD}/Uploaded" "${PWD}/Converted/Uploaded"
 mkdir "Uploaded"
 
 # loop through attendings
-for i in "${attds[@]}"; do 
+for i in "${attds[@]}"; do
 	# create dir for each attd
-	mkdir "$i"
+	mkdir "Outstanding/${i}"
 
 	# insert link to DONE
-	ln -s "${PWD}/DONE" "${PWD}/${i}/DONE"
+	ln -s "${PWD}/DONE" "${PWD}/Outstanding/${i}/DONE"
 
 	# generate random number of test rvs's
 	# and create them with some random info
@@ -51,7 +53,7 @@ for i in "${attds[@]}"; do
 	while [ $counter -lt $r ]; do
 		# set the random values for filenames
 		Year=$(date +%Y)
-		
+
 		Mo=0
 		while [ $Mo -le 0 ]; do
 			Mo=$RANDOM
@@ -65,7 +67,7 @@ for i in "${attds[@]}"; do
 		if [ $Mo -le 9 ]; then
 			Mo="0$Mo"
 		fi
-		
+
 		Day=0
 		while [ $Day -le 0 ]; do
 			Day=$RANDOM
@@ -74,7 +76,7 @@ for i in "${attds[@]}"; do
 		if [ $Day -le 9 ]; then
 			Day="0${Day}"
 		fi
-		
+
 		ID=0
 		while [ $ID -le 0 ]; do
 			ID=$RANDOM
@@ -82,14 +84,14 @@ for i in "${attds[@]}"; do
 		done
 
 		# create the file
-		touch "./$i/lname, fname_${ID}_${Year}.${Mo}.${Day}_RVS.doc"
+		touch "./Outstanding/$i/lname, fname_${ID}_${Year}.${Mo}.${Day}_RVS.doc"
 
 		# Unit Tests
 		##echo "Year: $Year"
 		##echo "Mo: $Mo"
 		##echo "Day: $Day"
 		##echo "ID: $ID"
-		echo " > ./${i}/${ID}"
+		echo " > ./Outstanding/${i}/${ID}"
 
 		let counter++
 	done
