@@ -31,7 +31,7 @@ echo "" | cat > premail.txt
 DATE=$(gdate +%Y%m%d)
 ##echo "today is [$DATE]"
 
-files="$(ls -1 ./$name_dir/*RVS*)"  # first get all full file names in one var
+files="$(ls -1 ./Outstanding/$name_dir/*RVS*)"  # first get all full file names in one var
 arr=$(echo "$files" | tr ";" "\n")                                           # parse into each short file name
 for x in $arr
 do
@@ -40,7 +40,7 @@ do
   arrloop=$(echo "$x" | tr "_" "\n")                                      # parse each filename to extract pidn and date
   for x in $arrloop
   do
-    let parsecount++                                                         
+    let parsecount++
      ##echo "parse $parsecount"
     if [ $parsecount -eq 2 ] && [ $x -eq $x ] 2>/dev/null; then
       let rvscount++                                                          # count outstanding rvs's
@@ -56,7 +56,7 @@ do
       DUEDATEDASH=$(gdate -d "$DUEDATE" +%Y-%m-%d)                             # calculate due date formatted for email
       if [ "$DATE" -ge "$DUEDATE" ]; then
         let rvsoverduecount++                                                 # count overdue rvs's
-        echo "  $rvspidn from ${rvsdatedash} is OVERDUE" | cat >> premail.txt 
+        echo "  $rvspidn from ${rvsdatedash} is OVERDUE" | cat >> premail.txt
       else
         echo "  $rvspidn from ${rvsdatedash} is due ${DUEDATEDASH}" | cat >> premail.txt
       fi
@@ -67,14 +67,14 @@ done
 
 echo "You have [${rvscount}] RVS's outstanding. [${rvsoverduecount}] of these are overdue, please approve." | cat >> email.txt    # compose email
 cat premail.txt >> email.txt
-echo "" | cat >> email.txt                                                                                        
+echo "" | cat >> email.txt
 echo "Files are in <path>${name_dir}" | cat >> email.txt
 echo "" | cat >> email.txt
 echo "Do not reply to this email, please contact ${name_ccemail} if you have any questions." | cat >> email.txt
 
 if [ "$rvscount" -gt "0" ]; then
   mail -s "Overdue RVS's" -c "$name_ccemail" "$name_email" < email.txt # send attd email if they have any outstanding RVS's
-  echo "> email sent to [${name_email}]"                                                                          
+  echo "> email sent to [${name_email}]"
 fi
 }
 
