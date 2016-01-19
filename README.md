@@ -2,7 +2,7 @@
 
  > The "autonomy branch" is created as a standalone package.
  The original code was set up in a directory structure that I
- had no control over (part of a shared server - containted lots of spaces and underscores...). This branch will function on it's own, including a script to create a local diretory test set and fill it with some test rvs's, simulating a local rvs program.
+ had no control over (part of a shared server - containted lots of spaces and underscores...). This branch will simulate your very own local rvs program on your mac or linux machine.
 
 An "rvs" is a summary of a research participant's visit. An rvs is completed every time someone participates in the research project. This summary must be completed and sent to the participant's primary care physicians in a timely fashion, so that it offers clinically relevent advise and documentation. A research visit is conducted by many people, but is always overseen by an attending physician (aka attending), who must approve and complete the rvs. There are 12 attendings in this case. The rvs project has it's own root directory in which each attending has a folder containing their rvs's. When a participant finishes their research visit, the rvs manager will place a rough draft rvs (drafted by another clinician that saw the participant) in the appropriate attending's folder (after proofreading and checking for innapropriate disclosure). The attending will make edits and approve the rvs, then move it into the "DONE" folder. From the "DONE" folder, the rvs manager will again check for any innaprioate disclosure and bring the rvs to a standard formatting before sending out and archiving. Each rvs is named "lname, fname_id_yyyy.mm.dd_RVS" and is either a .doc or.docx word document.
 
