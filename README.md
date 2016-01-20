@@ -14,9 +14,10 @@ This standalone package can simulate the rvs project flow. To create this simula
 
 Check out "rvs_lifecycle.txt" for a schematic of the directory structure and a more visual explanation of where rvs's go, "test_email.txt" to see one of the emails "RVS_emailer.sh" should send, and "figure_1.png" to see what "RVS_vis.py" should produce.
 
+----
+
 Also, start to manually change around the info in the rvs filenames or move some around/make new ones like the rvs manager or attending would to see how "RVS_emailer.sh" and "RVS_reporter.sh" give different output.
 
-----
 
 * RVS_test_setup.sh initializes the linked directory structure and generates random fake rvs's. It also creates an empty "RVS_report.csv".
 
