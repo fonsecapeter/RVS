@@ -12,7 +12,7 @@ This standalone package can simulate the rvs project flow. To create this simula
 
 ----
 
-Check out "rvs_lifecycle.txt" for a schematic of the directory structure and a more visual explanation of where rvs's go, "test_email.txt" to see one of the emails "RVS_emailer.sh" should send, and "figure_1.png" to see what "RVS_vis.py" should produce.
+Check out "rvs_lifecycle.png" for a schematic of the directory structure and a more visual explanation of where rvs's go, "test_email.txt" to see one of the emails "RVS_emailer.sh" should send, and "figure_1.png" to see what "RVS_vis.py" should produce. for simplicity, these files follow one rvs that Dr. Hibbert is responsible for.
 
 ----
 
