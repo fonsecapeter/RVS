@@ -68,7 +68,7 @@ done
 echo "You have [${rvscount}] RVS's outstanding. [${rvsoverduecount}] of these are overdue, please approve." | cat >> email.txt    # compose email
 cat premail.txt >> email.txt
 echo "" | cat >> email.txt
-echo "Files are in <path>${name_dir}" | cat >> email.txt
+echo "Files are in rvs/Outstanding/${name_dir}" | cat >> email.txt
 echo "" | cat >> email.txt
 echo "Do not reply to this email, please contact ${name_ccemail} if you have any questions." | cat >> email.txt
 

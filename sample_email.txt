@@ -13,6 +13,6 @@ You have [5] RVS's outstanding. [4] of these are overdue, please approve.
   12705 from 2015-06-17 is OVERDUE
   13191 from 2015-03-06 is OVERDUE
 
-Files are in <path>/Hibbert,Julius
+Files are in rvs/Outstanding/Hibbert,Julius
 
 Do not reply to this email, please contact Peter.Fonseca@notarealemailaddress.com if you have any questions.
