@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="469.16686"
-     inkscape:cy="564.45405"
+     inkscape:zoom="4"
+     inkscape:cx="193.07737"
+     inkscape:cy="752.96529"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -450,7 +450,7 @@
          y="249.89409"><tspan
            id="tspan4201"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.56962585px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#9fa7af;fill-opacity:1;"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6329174px;font-family:github-octicons;-inkscape-font-specification:github-octicons;fill:#9fa7af;fill-opacity:1;"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6329174px;font-family:github-octicons;-inkscape-font-specification:github-octicons;fill:#6283cc;fill-opacity:1"
    id="tspan4241"></tspan> lname, fname_12377_2016.01.04_RVS.doc</tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -699,6 +699,28 @@
    style="font-size:18.5625px;fill:#9fa7af;fill-opacity:1">conversion to </tspan><tspan
    id="tspan4373"
    style="-inkscape-font-specification:github-octicons;font-family:github-octicons;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:20.625px;fill:#cc412c;fill-opacity:1"></tspan> pdf</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:35px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="107.25"
+       y="271.86221"
+       id="text4333"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4335"
+         x="107.25"
+         y="271.86221" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:35px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="76"
+       y="272.86221"
+       id="text4337"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4339"
+         x="76"
+         y="272.86221" /></text>
   </g>
   <g
      inkscape:groupmode="layer"
