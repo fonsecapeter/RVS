@@ -1,5 +1,7 @@
 ## This repository contains the core code used to manage the rvs program.
 
+#### The "jarvs" branch is for an experimental plan to create a personal rvs assistant living in the termal, making the rvs program very easy and straightforward to manage.
+
  > The original code was set up in a directory structure that I
  had no control over (part of a shared server - containted lots of spaces and underscores...). This branch will simulate your very own local rvs program on a mac or linux machine.
 
