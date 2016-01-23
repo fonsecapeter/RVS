@@ -41,7 +41,7 @@ while true; do
 				echo "All you have to do is give me a command."
 				echo "Ask me for a list to see what commands I am programmed"
 				echo "to understand"
-			tput sgr0 
+			tput sgr0
 			continue
 		;;
 
@@ -101,7 +101,7 @@ while true; do
 				menu="main"
 			tput sgr0
 			continue 2
-			;;
+		;;
 
 		*"bye"*)
 			tput setaf 2
@@ -116,7 +116,7 @@ while true; do
 				echo "I'll show you all the rvs's currently waiting"
 				echo "for approval"
 				./RVS_reporter.sh
-			tput sgr0	
+			tput sgr0
 			continue
 		;;
 
