@@ -20,29 +20,11 @@ while true; do
 
 		case "$cmd" in
 
-		*"how are you"*)
-			tput setaf 2
-				echo "I can't complain"
-			tput sgr0
-			continue
-		;;
-
 		*"bye"*)
 			tput setaf 2
 				echo "Goodbye, let me know if you need anything else."
 			tput sgr0
 			exit
-		;;
-
-		*"help"*)
-			tput setaf 2
-				echo "I am your personal assistant, you can call me Jarvs."
-				echo "Peter built me to help you manage the rvs program."
-				echo "All you have to do is give me a command."
-				echo "Ask me for a list to see what commands I am programmed"
-				echo "to understand"
-			tput sgr0
-			continue
 		;;
 
 		*"list"*)
@@ -68,9 +50,27 @@ while true; do
 			break
 		;;
 
+		*"help"*)
+			tput setaf 2
+				echo "I am your personal assistant, you can call me Jarvs."
+				echo "Peter built me to help you manage the rvs program."
+				echo "All you have to do is give me a command."
+				echo "Ask me for a list to see what commands I am programmed"
+				echo "to understand"
+			tput sgr0
+			continue
+		;;
+
 		*"thank"*)
 			tput setaf 2
 				echo "No need to thank me, it's my job."
+			tput sgr0
+			continue
+		;;
+
+		*"how are you"*)
+			tput setaf 2
+				echo "I can't complain"
 			tput sgr0
 			continue
 		;;
