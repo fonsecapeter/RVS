@@ -10,7 +10,7 @@ tput setaf 2
 	echo "Hello, ${USER}. What can I help you with?"
 tput sgr0
 
-# main menu----------------------------------------
+# main menu ----------------------------------------
 
 while true; do
 	menu="main"
@@ -36,9 +36,10 @@ while true; do
 
 		*"email"*)
 			tput setaf 2
-				echo "I'm sorry I can't help you with that."
-				echo "Peter is still working on the code."
+				echo "Of course, I am programmed to help you send emails."
 			tput sgr0
+			menu="email"
+			break
 			continue
 		;;
 
@@ -88,6 +89,9 @@ while true; do
 # reporting menu ----------------------------------------
 
 	while [ menu="report" ]; do
+		if [menu!="report"]; do
+			break
+		fi
 		tput setaf 2
 			echo "How can I help you with reporting?"
 		tput sgr0
@@ -148,5 +152,55 @@ while true; do
 		;;
 		esac
 	done
+
+# emailing menu ----------------------------------------
+	while [ menu="email" ]; do
+		tput setaf 2
+			echo "How can I help you with emails?"
+		tput sgr0
+		read cmd
+
+		case $cmd in
+
+			*"done"*)
+				tput setaf 2
+					echo "Fantastic, what else can I do for you?"
+					menu="main"
+				tput sgr0
+				continue 2
+			;;
+
+			*"bye"*)
+				tput setaf 2
+					echo "Goodbye, let me know if you need anything else."
+				tput sgr0
+				exit
+			;;
+
+			*"email"*)
+				tput setaf 2
+					echo "No problem, let me write these up."
+					./RVS_emailer.sh
+				tput sgr0
+				continue
+			;;
+
+			*help*)
+				tput setaf 2
+					echo "You last told me that wanted some help sending emails."
+					echo "If you need something else say done"
+				tput sgr0
+				continue
+			;;
+
+			*)
+				tput setaf 2
+					echo "I'm terribly sorry, I don't understand that."
+					echo "Try typing 'help' or 'bye'"
+				tput sgr0
+				continue
+			;;
+			esac
+		done
 
 done
