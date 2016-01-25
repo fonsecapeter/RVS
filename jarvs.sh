@@ -15,7 +15,7 @@ tput sgr0
 while true; do
 	menu="main"
 
-	while [ menu="main" ]; do
+	while [ $menu == "main" ]; do
 		read cmd
 
 		case "$cmd" in
@@ -40,7 +40,6 @@ while true; do
 			tput sgr0
 			menu="email"
 			break
-			continue
 		;;
 
 		*"report"*)
@@ -88,10 +87,10 @@ while true; do
 
 # reporting menu ----------------------------------------
 
-	while [ menu="report" ]; do
-		if [menu!="report"]; do
-			break
-		fi
+	while [ $menu == "report" ]; do
+		#if [menu != "report"]; then
+		#	break
+		#fi
 		tput setaf 2
 			echo "How can I help you with reporting?"
 		tput sgr0
@@ -138,7 +137,7 @@ while true; do
 		*help*)
 			tput setaf 2
 				echo "You last told me that wanted some help reporting."
-				echo "If you need something else say done"
+				echo "If you need something else, just let me know."
 			tput sgr0
 			continue
 		;;
@@ -154,7 +153,7 @@ while true; do
 	done
 
 # emailing menu ----------------------------------------
-	while [ menu="email" ]; do
+	while [ menu == "email" ]; do
 		tput setaf 2
 			echo "How can I help you with emails?"
 		tput sgr0
@@ -188,7 +187,7 @@ while true; do
 			*help*)
 				tput setaf 2
 					echo "You last told me that wanted some help sending emails."
-					echo "If you need something else say done"
+					echo "If you need something else, just let me know."
 				tput sgr0
 				continue
 			;;
