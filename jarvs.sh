@@ -129,7 +129,7 @@ while true; do
 				break
 			;;
 
-			*"date"*)
+			*"date"*|*"cal"*)
 				puts "Always good to stay oriented."
 				echo ""
 				cal
