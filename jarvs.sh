@@ -129,10 +129,22 @@ while true; do
 				break
 			;;
 
+			# linux weather-util & weather-util-data, mac need ansiweather?
+			*"weather"*|*"forecast"*)
+				echo ""
+				tput setaf $clr
+				weather 94158
+				tput sgr0
+				echo ""
+			;;
+
+
 			*"date"*|*"cal"*)
 				puts "Always good to stay oriented."
 				echo ""
+				tput setaf $clr
 				cal
+				tput sgr0
 				echo ""
 			;;
 
@@ -140,7 +152,9 @@ while true; do
 			*"today"*)
 				puts "Here is your agenda for the day:"
 				echo ""
+				tput setaf $clr
 				icalbuddy -f -sc eventsToday
+				tput sgr0
 				echo ""
 			;;
 
@@ -219,7 +233,9 @@ while true; do
 				puts "No problem, let me crunch the numbers."
 				puts "I'll show you all the rvs's currently waiting"
 				puts "for approval"
+				tput setaf $clr
 				./RVS_reporter.sh
+				tput sgr0
 				continue
 			;;
 
@@ -228,7 +244,9 @@ while true; do
 				puts "I'll show you all the rvs's waiting for approval"
 				puts "since the last time I reported."
 				puts "I won't log the data on this one"
+				tput setaf $clr
 				./RVS_vis.py
+				tput sgr0
 				continue
 			;;
 
@@ -255,7 +273,9 @@ while true; do
 
 			*"email"*)
 				puts "No problem, let me write these up."
+				tput setaf $clr
 				./RVS_emailer.sh
+				tput sgr0
 				continue
 			;;
 
