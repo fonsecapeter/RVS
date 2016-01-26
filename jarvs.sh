@@ -80,49 +80,37 @@ puts () {
 
 puts "Hello, ${USER}. What can I help you with?"
 
+menu="main"
+
 # put all menu's in infinite loop ----------------------
 while true; do
 
-	menu="main"
 	# main menu ----------------------------------------
 	while [ $menu == "main" ]; do
 		read cmd
 
 		case "$cmd" in
 
-		*"list"*)
-			puts "<bye> <help> <list> <preferences> <eamil> <report>"
-			continue
-		;;
+			*"list"*)
+				puts "<bye> <help> <list> <preferences> <eamil> <report>"
+				continue
+			;;
 
-		*"report"*)
-			puts "Of course, I am programmed to tell you how the attendings are doing."
-			menu="report"
-			break
-		;;
+			*"help"*)
+				puts "I am your personal assistant, you can call me Jarvs."
+				puts "Peter built me to help you manage the rvs program."
+				puts "All you have to do is give me a command."
+				puts "Ask me for a list to see what commands I am programmed"
+				puts "to understand"
+				puts "You can always tell me to take a break by saying bye."
+				continue
+			;;
 
-		*"email"*)
-			puts "Of course, I am programmed to help you send emails."
-			menu="email"
-			break
-		;;
-
-		*"help"*)
-			puts "I am your personal assistant, you can call me Jarvs."
-			puts "Peter built me to help you manage the rvs program."
-			puts "All you have to do is give me a command."
-			puts "Ask me for a list to see what commands I am programmed"
-			puts "to understand"
-			puts "You can always tell me to take a break by saying bye."
-			continue
-		;;
-
-		*)
-			prev_menu="$menu"
-			menu="utils"
-			break
-		;;
-
+			*)
+				prev_menu="$menu"
+				menu="utils"
+				break
+			;;
 		esac
 	done
 
@@ -180,7 +168,6 @@ while true; do
 
 			*"how are you"*)
 				puts "I can't complain"
-				continue
 			;;
 
 			*)
@@ -188,8 +175,8 @@ while true; do
 				puts "Try typing help, list, done, or bye."
 				puts "Make sure you are typing in lower-case."
 			;;
-
 		esac
+
 		menu="$prev_menu"
 		break
 	done
