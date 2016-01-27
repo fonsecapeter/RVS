@@ -6,17 +6,40 @@
 #  * set arguments for other useful commands
 #  * maintain list of <command> s
 
+set_name () {
+	echo "Do you usually go by ${USER}?"
+	contin="yes"
+	while [ $contin == "yes" ]; do
+		read name_resp
+
+		case "$name_resp" in 
+			"yes")
+				echo "Great, I thought so."
+				echo "$USER" > ./user_name.txt
+				contin="no"
+				break
+			;;
+			"no")
+				echo "How would you prefer I address you?"
+				read user_name
+				echo "$user_name" > ./user_name.txt
+				echo "Thanks, ${user_name}, I'll be sure to make"
+				echo "note of that."
+				contin="no"
+				break
+			;;
+			*)
+				echo "My apologies, I don't understand that."
+				echo "Try typing yes or no in lower-case."
+				contin="yes"
+			;;
+		esac
+	done
+	user_name=`cat ./user_name.txt`
+}
+
 set_color () {
-	# introduce jarvs if first time using
-	if [ ! -f ./clr.txt ]; then
-		echo "Hello, ${USER}"
-		echo "My name is Jarvs, and I am your personal assistant."
-		echo "Peter built me to help manage the rvs program."
-		echo "I hope you find that I make life easier."
-		echo "Before we get started, what is your favorite color?"
-	else
-		echo "What is your favorite color?"
-	fi
+	echo "What is your favorite color?"
 	echo "choices are: red, green, orange,"
 	echo "blue, purple, light-blue, and white"
 	read fav_clr
@@ -64,11 +87,19 @@ set_color () {
 	tput sgr0
 }
 
-# if first time using jarvs, set favorite color
+# if first time using jarvs, set preferences
 if [ ! -f ./clr.txt ]; then
+	echo "Hello, ${USER}"
+	echo "My name is Jarvs, and I am your personal assistant."
+	echo "Peter built me to help manage the rvs program."
+	echo "I hope you find that I make life easier."
+	echo "Before we get started, I have a few questions for you."
+	set_name
+	echo "Lastly:"
 	set_color
 fi
 
+user_name=`cat ./user_name.txt`
 clr=`cat ./clr.txt`
 
 puts () {
@@ -78,7 +109,7 @@ puts () {
 	tput sgr0
 }
 
-puts "Hello, ${USER}. What can I help you with?"
+puts "Hello, ${user_name}. What can I help you with?"
 
 menu="main"
 
@@ -221,7 +252,7 @@ while true; do
 				continue
 			;;
 
-			*help*)
+			*"help"*)
 				puts "You last told me that wanted to edit your preferences."
 				puts "If you need something else, just let me know."
 				continue
@@ -271,7 +302,7 @@ while true; do
 				continue
 			;;
 
-			*help*)
+			*"help"*)
 				puts "You last told me that wanted some help reporting."
 				puts "If you need something else, just let me know."
 				continue
@@ -307,7 +338,7 @@ while true; do
 				continue
 			;;
 
-			*help*)
+			*"help"*)
 				puts "You last told me that wanted some help sending emails."
 				puts "If you need something else, just let me know."
 				continue
