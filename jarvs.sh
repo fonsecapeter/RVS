@@ -93,6 +93,7 @@ while true; do
 
 			*"list"*)
 				puts "<bye> <help> <list> <preferences> <eamil> <report>"
+				puts "<date> <agenda> <weather>"
 				continue
 			;;
 
@@ -127,6 +128,12 @@ while true; do
 				puts "Fantastic, what else can I do for you?"
 				menu="main"
 				break
+			;;
+
+			*"list"*)
+				puts "<bye> <help> <list> <preferences> <eamil> <report>"
+				puts "<date> <agenda> <weather>"
+				continue
 			;;
 
 			# linux weather-util & weather-util-data, mac need ansiweather?
@@ -207,6 +214,13 @@ while true; do
 				continue
 			;;
 
+			*"list"*)
+				puts "<color>"
+				puts "<bye> <help> <list> <eamil> <report>"
+				puts "<date> <agenda> <weather>"
+				continue
+			;;
+
 			*help*)
 				puts "You last told me that wanted to edit your preferences."
 				puts "If you need something else, just let me know."
@@ -250,6 +264,13 @@ while true; do
 				continue
 			;;
 
+			*"list"*)
+				puts "<report> <vis>"
+				puts "<bye> <help> <list> <preferences> <eamil>"
+				puts "<date> <agenda> <weather>"
+				continue
+			;;
+
 			*help*)
 				puts "You last told me that wanted some help reporting."
 				puts "If you need something else, just let me know."
@@ -276,6 +297,13 @@ while true; do
 				tput setaf $clr
 				./RVS_emailer.sh
 				tput sgr0
+				continue
+			;;
+
+			*"list"*)
+				puts "<email>"
+				puts "<bye> <help> <list> <preferences> <report>"
+				puts "<date> <agenda> <weather>"
 				continue
 			;;
 
