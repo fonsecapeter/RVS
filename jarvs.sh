@@ -15,14 +15,14 @@ set_name () {
 		case "$name_resp" in 
 			"yes")
 				echo "Great, I thought so."
-				echo "$USER" > ./user_name.txt
+				echo "$USER" > ./preferences/user_name.txt
 				contin="no"
 				break
 			;;
 			"no")
 				echo "How would you prefer I address you?"
 				read user_name
-				echo "$user_name" > ./user_name.txt
+				echo "$user_name" > ./preferences/user_name.txt
 				echo "Thanks, ${user_name}, I'll be sure to make"
 				echo "note of that."
 				contin="no"
@@ -35,7 +35,7 @@ set_name () {
 			;;
 		esac
 	done
-	user_name=`cat ./user_name.txt`
+	user_name=`cat ./preferences/user_name.txt`
 }
 
 set_color () {
@@ -46,31 +46,31 @@ set_color () {
 
 	case "$fav_clr" in
 		red)
-			echo "1" > ./clr.txt
+			echo "1" > ./preferences/clr.txt
 		;;
 
 		green)
-			echo "2" > ./clr.txt
+			echo "2" > ./preferences/clr.txt
 		;;
 
 		orange)
-			echo "3" > ./clr.txt
+			echo "3" > ./preferences/clr.txt
 		;;
 
 		blue)
-			echo "4" > ./clr.txt
+			echo "4" > ./preferences/clr.txt
 		;;
 
 		purple)
-			echo "5" > ./clr.txt
+			echo "5" > ./preferences/clr.txt
 		;;
 
 		light-blue)
-			echo "6" > ./clr.txt
+			echo "6" > ./preferences/clr.txt
 		;;
 
 		white)
-			echo "7" > ./clr.txt
+			echo "7" > ./preferences/clr.txt
 		;;
 
 		*)
@@ -79,7 +79,7 @@ set_color () {
 		;;
 	esac
 
-	clr=`cat ./clr.txt`
+	clr=`cat ./preferences/clr.txt`
 	tput setaf $clr
 		echo "Much better, Thanks!"
 		echo "If you ever change your mind,"
@@ -87,20 +87,33 @@ set_color () {
 	tput sgr0
 }
 
+set_email () {
+	echo "What is your email address?"
+	echo "Don't worry, I wont spam you with promotions."
+	read user_email
+	echo "Got it."
+	echo "${user_email}" > ./preferences/user_email.txt
+	user_email=`cat ./preferences/user_email.txt`
+}
+
 # if first time using jarvs, set preferences
-if [ ! -f ./clr.txt ]; then
+if [ ! -f ./preferences/clr.txt ]; then
+	mkdir preferences
 	echo "Hello, ${USER}"
 	echo "My name is Jarvs, and I am your personal assistant."
 	echo "Peter built me to help manage the rvs program."
 	echo "I hope you find that I make life easier."
 	echo "Before we get started, I have a few questions for you."
 	set_name
+	echo "Also,"
+	set_email
 	echo "Lastly:"
 	set_color
 fi
 
-user_name=`cat ./user_name.txt`
-clr=`cat ./clr.txt`
+user_name=`cat ./preferences/user_name.txt`
+user_email=`cat ./preferences/user_email.txt`
+clr=`cat ./preferences/clr.txt`
 
 puts () {
 	output=$1
@@ -245,8 +258,18 @@ while true; do
 				continue
 			;;
 
+			*"name"*)
+				set_name
+				continue
+			;;
+
+			*"email"*)
+				set_email
+				continue
+			;;
+
 			*"list"*)
-				puts "<color>"
+				puts "<email> <color> <name>"
 				puts "<bye> <help> <list> <eamil> <report>"
 				puts "<date> <agenda> <weather>"
 				continue
