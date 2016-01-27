@@ -241,6 +241,71 @@ while true; do
 				break
 			;;
 
+			*"rvs manager"*)
+				puts "You must be the rvs manager, a clinical research"
+				puts "coordinator responsible for overseeing the rvs program."
+				puts "It is crucial to ensure that every note is written,"
+				puts "approved, sent, and archived. This can be a source of"
+				puts "contention if it is not running smoothly. Particpants"
+				puts "contribute a full week of 9-5 work, often including"
+				puts "specimen donation and a flight across the country. The"
+				puts "rvs is one ofthe only ways we can give back. Along that"
+				puts "vein, the advice within is not clinically relevent after"
+				puts "6 months and there are many governing rules to what can"
+				puts "disclosed. The rvs manager must make sure the center is"
+				puts "complient and efficient."
+				puts ""
+				puts "This task is greater than anticipated, especially considering"
+				puts "the growth of the study, so Peter made me to help. I can"
+				puts "currently assist on the attending side of things, producing"
+				puts "and logging reports, as well as sending weekly reminders to"
+				puts "any attending with at least one outstanding rvs."
+				puts ""
+				puts "A graphical explanation of the flow of an rvs can be seen here:"
+				# first instance of linux vs os compatibility
+				if [ $OS == "Linux" ]; then
+					# 2> /dev/null suppresses error notifications
+					eog ./rvs_lifecycle.png 2> /dev/null
+				else
+					open ./rvs_lifecycle.png
+				fi
+				puts "This followed the life of 12377's visit on January 4th, 2016."
+				puts "I would've sent Dr. Hibbert this email:"
+				echo ""
+				tput setaf $clr
+				cat ./sample_email.txt
+				tput sgr0
+				echo ""
+				puts "I also would've shown you this report:"
+				if [ $OS == "Linux" ]; then
+					# 2> /dev/null suppresses error notifications
+					eog ./figure_1.png 2> /dev/null
+				else
+					open ./figure_1.png
+				fi
+			;;
+
+
+			*"what is"*"rvs"*)
+				puts "An rvs is a research visit summary."
+				puts "It includes the entire life-hisotry of the particpant"
+				puts "in a semi-standard fashion, organized by history of"
+				puts "present illness, medical history, social history, family"
+				puts "history, lab testing, imaging, and more."
+				puts "These rvs's make up a vital resource for researchers and"
+				puts "participants. Each participant gets a copy of their rvs"
+				puts "and lists a primary doctor (or doctors) who also get a"
+				puts "copy. The research center serves as a team of experts"
+				puts "devoted to diseases that are otherwise not well-described"
+				puts "or are rare, so their advice is cliniclally relevent to"
+				puts "the participant's continued clinical care."
+				puts "In a large research project, many research participants"
+				puts "come in for visits. During a visit, the participant will"
+				puts "see different researchers and clinicians. A visit is"
+				puts "always overseen by an attending physician (attending), who"
+				puts "must give final approval of the rvs."
+			;;
+
 			*"thank"*)
 				puts "No need to thank me, it's my job."
 			;;
