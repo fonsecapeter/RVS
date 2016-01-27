@@ -12,7 +12,7 @@ set_name () {
 	while [ $contin == "yes" ]; do
 		read name_resp
 
-		case "$name_resp" in 
+		case "$name_resp" in
 			"yes")
 				echo "Great, I thought so."
 				echo "$USER" > ./preferences/user_name.txt
@@ -40,8 +40,22 @@ set_name () {
 
 set_color () {
 	echo "What is your favorite color?"
-	echo "choices are: red, green, orange,"
-	echo "blue, purple, light-blue, and white"
+	echo "choices are:"
+	tput setaf 1
+	echo "red"
+	tput setaf 2
+	echo "green"
+	tput setaf 3
+	echo "orange"
+	tput setaf 4
+	echo "blue"
+	tput setaf 5
+	echo "purple"
+	tput setaf 6
+	echo "light-blue"
+	tput setaf 7sss
+	echo "white"
+	tput sgr0
 	read fav_clr
 
 	case "$fav_clr" in
@@ -159,7 +173,7 @@ while true; do
 		esac
 	done
 
-	# utilities menu ----------------------------------------	
+	# utilities menu ----------------------------------------
 	while [ $menu == "utils" ]; do
 		case $cmd in
 
@@ -225,7 +239,7 @@ while true; do
 				puts "Of course, I am programmed to help you send emails."
 				menu="email"
 				break
-			;;				
+			;;
 
 			*"thank"*)
 				puts "No need to thank me, it's my job."
